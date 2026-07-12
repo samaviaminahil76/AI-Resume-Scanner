@@ -1,0 +1,16 @@
+Alex Morgan
+Junior Software Engineer
+
+Summary
+Software engineering graduate with hands-on experience building web and AI-powered applications.
+
+Experience
+- Built Python data pipelines for a student analytics project using pandas and PostgreSQL.
+- Developed a React task-management application with Firebase authentication.
+- Created a document-question-answering chatbot using an LLM API and prompt engineering.
+
+Skills
+Python, JavaScript, React, SQL, PostgreSQL, Git, GitHub, REST APIs, Docker
+
+Education
+BS Software Engineering, 2022-2026

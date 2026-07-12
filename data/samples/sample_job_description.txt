@@ -1,0 +1,11 @@
+Junior AI Engineer
+
+We are looking for a Junior AI Engineer to build reliable AI-powered product features.
+
+Requirements
+- Strong Python skills and experience building AI-powered applications.
+- Familiarity with LLM APIs and prompt engineering.
+- Experience with FastAPI or a comparable Python backend framework.
+- Familiarity with vector databases such as Qdrant or Pinecone.
+- Strong Git and GitHub workflow discipline.
+- Ability to work with SQL databases and REST APIs.
