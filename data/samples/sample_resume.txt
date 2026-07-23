@@ -1,16 +1,19 @@
-Alex Morgan
-Junior Software Engineer
+Samavia Minahil
 
-Summary
-Software engineering graduate with hands-on experience building web and AI-powered applications.
+Software Engineering Student
 
-Experience
-- Built Python data pipelines for a student analytics project using pandas and PostgreSQL.
-- Developed a React task-management application with Firebase authentication.
-- Created a document-question-answering chatbot using an LLM API and prompt engineering.
+Skills:
+Python
+FastAPI
+Java
+SQL
+Git
+REST APIs
 
-Skills
-Python, JavaScript, React, SQL, PostgreSQL, Git, GitHub, REST APIs, Docker
+Projects:
+AI Resume Scanner using Gemini API.
+Developed backend APIs and integrated AI analysis.
 
-Education
-BS Software Engineering, 2022-2026
+Education:
+BS Software Engineering
+CGPA: 3.54
