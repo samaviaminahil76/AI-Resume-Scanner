@@ -11,6 +11,8 @@ class ResumeAnalysisResponse(BaseModel):
         le=100,
     )
 
+    ats_rating: str
+
     strengths: list[str]
 
     missing_keywords: list[str]
