@@ -1,14 +1,26 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 
 from backend.routes.analyze import router as analyze_router
-from backend.utils.validators import validate_job_description
 from backend.routes import upload
-
+from backend.utils.validators import validate_job_description
 
 app = FastAPI(
     title="AI Resume Scanner API",
     description="Backend API for AI-powered Resume Analysis",
     version="1.0.0",
+)
+
+# Allow Next.js frontend to communicate with FastAPI
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
@@ -28,7 +40,6 @@ def home():
 def health_check():
     """
     Health check endpoint.
-    Used for monitoring and deployment verification.
     """
     return {
         "status": "healthy",
@@ -40,10 +51,6 @@ def test_validator(data: dict):
     """
     Temporary endpoint used to test
     job description validation.
-
-    This endpoint will be removed after
-    integrating validation into the main
-    analysis workflow.
     """
 
     try:
