@@ -1,55 +1,195 @@
-# AI Resume Scanner
+# 🤖 AI Resume Screener & Feedback Tool
 
-An AI-assisted resume-to-job-description matcher. It extracts resume text, compares it against a job description, and returns a structured, explainable assessment.
+An AI-powered resume screening tool that analyzes a candidate's resume against a job description, generates a match score (0–100), identifies missing keywords, and provides improvement suggestions.
 
-## What it should do
+## 🚀 Features
 
-- Accept a PDF or text resume and a job description.
-- Extract text locally and send only the necessary text to the model.
-- Return validated JSON: match score, matched and missing skills, evidence, and actionable suggestions.
-- Clearly state that it is decision support, not an automated hiring decision.
+### Resume Processing
 
-## Project layout
+* Upload resume files (PDF/TXT)
+* Extract resume text locally
+* Validate uploaded documents
 
-```text
-AI Resume Scanner/
-├── src/resume_scanner/       # Application code
-│   ├── prompts/              # Versioned LLM prompts
-│   └── schemas/              # Pydantic output contracts
-├── tests/                    # Unit and integration tests
-├── data/
-│   ├── samples/              # Safe, fictional test fixtures
-│   ├── uploads/              # Ignored local uploads
-│   └── outputs/              # Ignored local results
-├── docs/                     # Product, architecture, and security notes
-├── .env.example              # Environment variable template
-└── pyproject.toml              # Dependencies and package settings
+### Job Description Analysis
+
+* Add job descriptions for targeted analysis
+* Compare resume skills and experience against requirements
+
+### AI Feedback Generation
+
+* AI-powered resume evaluation
+* Match score generation (0–100)
+* Missing keyword detection
+* Rewrite and improvement suggestions
+
+### Data Validation
+
+* Structured JSON output
+* Pydantic validation
+* Retry handling for invalid AI responses
+
+### Frontend Dashboard
+
+* Next.js interface
+* Resume upload form
+* Job description input
+* Feedback and score display
+
+---
+
+# 🛠 Tech Stack
+
+## Frontend
+
+* Next.js
+* React
+* JavaScript
+* Tailwind CSS
+
+## Backend
+
+* FastAPI
+* Python
+* Pydantic
+* Uvicorn
+
+## AI Integration
+
+* Gemini API
+
+---
+
+# 📂 Project Structure
+
+```
+AI-Resume-Scanner
+│
+├── backend
+│   ├── routes
+│   ├── models
+│   ├── services
+│   └── main.py
+│
+├── frontend
+│   ├── src
+│   └── package.json
+│
+└── README.md
 ```
 
-## Quick start
+---
 
-1. Create a virtual environment: `python -m venv .venv`
-2. Activate it in PowerShell: `.\.venv\Scripts\Activate.ps1`
-3. Install the app and development dependencies: `pip install -e ".[dev]"`
-4. Copy `.env.example` to `.env`, then add your own key.
-5. Run the included fictional sample:
-   `python -m resume_scanner.cli data/samples/sample_resume.txt data/samples/sample_job_description.txt`
+# ⚙️ Setup Instructions
 
-Replace those paths with your actual resume and job-description files when ready. Both PDF and UTF-8 TXT files are supported.
+## Clone Repository
 
-Every successful scan writes two files to `data/outputs/`:
+```bash
+git clone <repository-url>
+cd AI-Resume-Scanner
+```
 
-- `assessment_<resume>_<timestamp>.json` — structured data for an API, dashboard, or database.
-- `assessment_<resume>_<timestamp>.md` — a readable report for a person.
+---
 
-Use `--output-dir <path>` to save reports elsewhere.
+# Backend Setup
 
-The default model is `gemini-3-flash-preview` (Gemini 3 Flash). Override `MODEL_NAME` only when you deliberately choose a different supported Gemini model.
+Create virtual environment:
 
-## Build order
+```bash
+python -m venv venv
+```
 
-Follow [docs/IMPLEMENTATION_PLAN.md](docs/IMPLEMENTATION_PLAN.md). Start by implementing `src/resume_scanner/schemas/assessment.py`, then the document reader and LLM service. Do not connect a UI until the schema validation and tests pass.
+Activate environment:
 
-## Security note
+Windows:
 
-A credential was previously embedded in the demo script. It has been removed from the source. Revoke/rotate that key in the provider console before continuing. Keep credentials only in `.env` or a secrets manager.
+```bash
+venv\Scripts\activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Create a `.env` file:
+
+```
+GEMINI_API_KEY=your_api_key_here
+```
+
+Run backend:
+
+```bash
+uvicorn backend.main:app --reload
+```
+
+Backend runs at:
+
+```
+http://127.0.0.1:8000
+```
+
+---
+
+# Frontend Setup
+
+Navigate to frontend:
+
+```bash
+cd frontend
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run development server:
+
+```bash
+npm run dev
+```
+
+Frontend runs at:
+
+```
+http://localhost:3000
+```
+
+---
+
+# 👥 Team Roles
+
+| Member          | Role                                 |
+| --------------- | ------------------------------------ |
+| Samavia Minahil | Backend Development & AI Integration |
+| Team Member 2   | Frontend Development                 |
+| Team Member 3   | Testing                              |
+| Team Member 4   | Documentation                        |
+| Team Member 5   | Project Management                   |
+
+---
+
+# 🔒 Security
+
+* API keys are stored using environment variables
+* No sensitive credentials are committed to GitHub
+* `.env` files are excluded using `.gitignore`
+
+---
+
+# 🔮 Future Improvements
+
+* User authentication
+* Resume history dashboard
+* Database integration
+* Better AI scoring algorithms
+* Cloud deployment
+
+---
+
+# 📌 Project Goal
+
+The goal of this project is to help job seekers understand how well their resume matches a job requirement and provide actionable AI-generated feedback to improve their chances.
