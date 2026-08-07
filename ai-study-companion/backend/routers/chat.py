@@ -1,8 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-from services.retrieval_service import retrieve_chunks
-from services.gemini_service import ask_gemini
+from services.chat_service import answer_question
 
 router = APIRouter()
 
@@ -14,17 +13,16 @@ class Question(BaseModel):
 @router.post("/ask")
 async def ask_question(data: Question):
     try:
-        chunks = retrieve_chunks(data.question)
-
-        context = "\n\n".join(chunks)
-
-        answer = ask_gemini(data.question, context)
+        result = answer_question(data.question)
 
         return {
             "question": data.question,
-            "answer": answer,
-            "sources": chunks
+            "answer": result["answer"],
+            "sources": result["sources"]
         }
 
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(
+            status_code=500,
+            detail=str(e)
+        )
