@@ -17,4 +17,10 @@ def retrieve_chunks(query: str, limit: int = 3):
         limit=limit,
     )
 
-    return [point.payload["text"] for point in response.points]
+    return [
+        {
+            "text": point.payload.get("text", ""),
+            "score": point.score,
+        }
+        for point in response.points
+    ]
