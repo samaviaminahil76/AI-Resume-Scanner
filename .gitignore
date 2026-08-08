@@ -19,3 +19,4 @@ data/outputs/
 # OS/editor files
 .DS_Store
 .vscode/
+**/uploads/
